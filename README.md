@@ -17,7 +17,7 @@ Neste processo eu aprendi:
 * ✅ Código Limpo
 
 ## REGRAS DO DESAFIO
-- [ ] Realizar um fork do repositório do desafio
+- [x] Realizar um fork do repositório do desafio
 - [ ] Executar testes de unidade do projeto
 - [ ] Ter 100% dos testes passando
 
@@ -26,4 +26,4 @@ O desafio **Caça aos Bugs 2025** consiste em encontrar bugs e sugerir melhorias
 Banco de Dados.
 
 ### Veja meu progresso no desafio
-[Incluir link para o repositório central]
+[https://github.com/GuilhermeAgunzo/balta-desafio-caca-aos-bugs-2025](https://github.com/GuilhermeAgunzo/balta-desafio-caca-aos-bugs-2025)
