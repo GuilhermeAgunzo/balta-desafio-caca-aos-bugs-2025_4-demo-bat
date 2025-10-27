@@ -96,8 +96,8 @@ public class CustomerRepository(AppDbContext db) : ICustomerRepository
                 .AsNoTracking();
 
             var customers = await query
-                .Take(pageSize)
                 .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
 
             var count = await query.CountAsync(cancellationToken);
