@@ -1,4 +1,6 @@
-﻿using BugStore.Infrastructure.Data;
+﻿using BugStore.Application.Abstractions.Repositories;
+using BugStore.Infrastructure.Data;
+using BugStore.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,5 +14,9 @@ public static class InfrastructureDependencyInjection
         {
             options.UseSqlite("Data Source=app.db");
         });
+
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
     }
 }
