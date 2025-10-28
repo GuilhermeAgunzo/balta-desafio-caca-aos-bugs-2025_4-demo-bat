@@ -1,6 +1,6 @@
 namespace BugStore.Application.Requests.Products;
 
-public class GetById
+public class GetProductsRequest : PagedRequest
 {
-    
+
 }
