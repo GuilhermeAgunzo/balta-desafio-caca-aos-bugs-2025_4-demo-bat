@@ -1,6 +1,6 @@
 ﻿namespace BugStore.Application.Requests.Orders;
 
-public class GetOrdersByCustomer : PagedRequest
+public class GetOrdersByCustomerRequest : PagedRequest
 {
     public Guid CustomerId { get; set; }
 }
