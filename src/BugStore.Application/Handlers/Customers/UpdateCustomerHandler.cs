@@ -1,13 +1,14 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Customers;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Customers;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Customers;
 
-public class UpdateCustomerHandler(ICustomerRepository customerRepository)
+public class UpdateCustomerHandler(ICustomerRepository customerRepository) : IUpdateCustomerHandler
 {
-    public async Task<Response<Customer>> Handle(UpdateCustomerRequest req, CancellationToken cancellationToken = default)
+    public async Task<Response<Customer>> HandleAsync(UpdateCustomerRequest req, CancellationToken cancellationToken = default)
     {
         var existingCustomerResult = await customerRepository.GetByIdAsync(req.CustomerId, cancellationToken);
 

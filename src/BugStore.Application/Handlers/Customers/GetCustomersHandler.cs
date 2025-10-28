@@ -1,11 +1,12 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Customers;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Customers;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Customers;
 
-public class GetCustomersHandler(ICustomerRepository customerRepository)
+public class GetCustomersHandler(ICustomerRepository customerRepository) : IGetCustomersHandler
 {
     public async Task<PagedResponse<IEnumerable<Customer>>> HandleAsync(GetCustomersRequest req, CancellationToken cancellationToken = default)
     {

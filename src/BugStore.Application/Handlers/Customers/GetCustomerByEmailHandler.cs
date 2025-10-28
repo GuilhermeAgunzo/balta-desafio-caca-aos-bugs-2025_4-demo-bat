@@ -1,13 +1,14 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Customers;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Customers;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Customers;
 
-public class GetCustomerByEmailHandler(ICustomerRepository customerRepository)
+public class GetCustomerByEmailHandler(ICustomerRepository customerRepository) : IGetCustomerByEmailHandler
 {
-    public async Task<Response<Customer>> Handle(GetCustomerByEmailRequest req, CancellationToken cancellationToken = default)
+    public async Task<Response<Customer>> HandleAsync(GetCustomerByEmailRequest req, CancellationToken cancellationToken = default)
     {
         var existingCustomerResult = await customerRepository.GetByEmailAsync(req.Email, cancellationToken);
 
