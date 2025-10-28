@@ -10,11 +10,11 @@ public class CustomerRepository(AppDbContext db) : ICustomerRepository
 {
     public async Task<Result<Customer>> AddAsync(Customer customer, CancellationToken cancellationToken = default)
     {
-        if (!customer.IsValid)
-            return Result<Customer>.Fail("INVALID_ENTITY: Customer is not valid");
-
         try
         {
+            if (!customer.IsValid)
+                return Result<Customer>.Fail("INVALID_ENTITY: Customer is not valid");
+
             await db.Customers.AddAsync(customer, cancellationToken);
             await db.SaveChangesAsync(cancellationToken);
 
@@ -117,11 +117,11 @@ public class CustomerRepository(AppDbContext db) : ICustomerRepository
 
     public async Task<Result<Customer>> UpdateAsync(Customer customer, CancellationToken cancellationToken = default)
     {
-        if (!customer.IsValid)
-            return Result<Customer>.Fail("INVALID_ENTITY: Customer is not valid");
-
         try
         {
+            if (!customer.IsValid)
+                return Result<Customer>.Fail("INVALID_ENTITY: Customer is not valid");
+
             var existing = await db.Customers.FirstOrDefaultAsync(c => c.Id == customer.Id, cancellationToken);
 
             if (existing is null)
