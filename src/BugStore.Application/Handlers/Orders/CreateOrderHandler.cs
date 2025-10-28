@@ -1,4 +1,5 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Orders;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Orders;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
@@ -8,7 +9,7 @@ namespace BugStore.Application.Handlers.Orders;
 public class CreateOrderHandler(
     IOrderRepository orderRepository,
     ICustomerRepository customerRepository,
-    IProductRepository productRepository)
+    IProductRepository productRepository) : ICreateOrderHandler
 {
     public async Task<Response<Order>> HandleAsync(CreateOrderRequest req, CancellationToken cancellationToken)
     {

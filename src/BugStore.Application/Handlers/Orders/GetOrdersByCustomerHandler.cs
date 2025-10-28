@@ -1,11 +1,12 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Orders;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Orders;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Orders;
 
-public class GetOrdersByCustomerHandler(IOrderRepository orderRepository)
+public class GetOrdersByCustomerHandler(IOrderRepository orderRepository) : IGetOrdersByCustomerHandler
 {
     public async Task<Response<IEnumerable<Order>>> HandleAsync(GetOrdersByCustomerRequest req, CancellationToken cancellationToken = default)
     {
