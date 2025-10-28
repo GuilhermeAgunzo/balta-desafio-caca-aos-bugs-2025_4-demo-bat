@@ -1,13 +1,14 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Products;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Products;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Products;
 
-public class UpdateProductHandler(IProductRepository productRepository)
+public class UpdateProductHandler(IProductRepository productRepository) : IUpdateProductHandler
 {
-    public async Task<Response<Product>> Handle(UpdateProductRequest req, CancellationToken cancellationToken = default)
+    public async Task<Response<Product>> HandleAsync(UpdateProductRequest req, CancellationToken cancellationToken = default)
     {
         var existingCustomerResult = await productRepository.GetByIdAsync(req.ProductId, cancellationToken);
 

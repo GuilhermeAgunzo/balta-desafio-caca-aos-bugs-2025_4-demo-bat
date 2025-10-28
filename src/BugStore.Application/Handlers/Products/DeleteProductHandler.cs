@@ -1,12 +1,13 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Products;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Products;
 using BugStore.Application.Responses;
 
 namespace BugStore.Application.Handlers.Products;
 
-public class DeleteProductHandler(IProductRepository productRepository)
+public class DeleteProductHandler(IProductRepository productRepository) : IDeleteProductHandler
 {
-    public async Task<Response<bool>> Handle(DeleteProductRequest req, CancellationToken cancellationToken = default)
+    public async Task<Response<bool>> HandleAsync(DeleteProductRequest req, CancellationToken cancellationToken = default)
     {
         var productResult = await productRepository.GetByIdAsync(req.ProductId, cancellationToken);
 

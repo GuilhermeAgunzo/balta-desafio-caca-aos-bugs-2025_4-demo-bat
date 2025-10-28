@@ -1,13 +1,14 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Products;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Products;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Products;
 
-public class CreateProductHandler(IProductRepository productRepository)
+public class CreateProductHandler(IProductRepository productRepository) : ICreateProductHandler
 {
-    public async Task<Response<Product>> Handle(CreateProductRequest req, CancellationToken cancellationToken = default)
+    public async Task<Response<Product>> HandleAsync(CreateProductRequest req, CancellationToken cancellationToken = default)
     {
         var (product, errors) = Product.Create(req.Title, req.Description, req.Price);
 

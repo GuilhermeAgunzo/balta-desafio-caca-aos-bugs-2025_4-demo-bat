@@ -1,11 +1,12 @@
-﻿using BugStore.Application.Abstractions.Repositories;
+﻿using BugStore.Application.Abstractions.Handlers.Products;
+using BugStore.Application.Abstractions.Repositories;
 using BugStore.Application.Requests.Products;
 using BugStore.Application.Responses;
 using BugStore.Domain.Entities;
 
 namespace BugStore.Application.Handlers.Products;
 
-public class GetProductsHandler(IProductRepository productRepository)
+public class GetProductsHandler(IProductRepository productRepository) : IGetProductsHandler
 {
     public async Task<PagedResponse<IEnumerable<Product>>> HandleAsync(GetProductsRequest req, CancellationToken cancellationToken = default)
     {
